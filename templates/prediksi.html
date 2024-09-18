@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Early Fusion</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  <link href="img/favicon.ico" rel="icon">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <link href="assets/lib/twentytwenty/twentytwenty.css" rel="stylesheet" />
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    .data-sample img {
+      max-width: 100px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Start -->
+<div class="container-fluid bg-primary py-5 hero-header mb-5">
+  <div class="row py-3">
+      <div class="col-12 text-center">
+          <h1 class="display-3 text-white animated zoomIn">Early Fusion</h1>
+          <a class="h4 text-white">Klasifikasi Penyakit Retinopati Diabetik Menggunakan CNN Dengan Multimodal Data Fusion Pada Dataset Citra Retina</a>
+      </div>
+  </div>
+</div>
+<!-- Hero End -->
+
+    <div class="container mt-5">
+      <!-- Bagian Form -->
+      <form method="POST" action="/upload" enctype="multipart/form-data" class="mt-4" id="uploadForm" onsubmit="return submitForm()">
+        <div class="form-group">
+          <label for="fundus">Unggah Gambar Fundus:</label>
+          <input type="file" class="form-control-file" name="fundus" id="fundus">
+        </div>
+        <!-- Bagian Data Sample Fundus -->
+        <div class="card mb-4">
+          <div class="card-header bg-primary text-white">
+            <h4>Data Sample Fundus</h4>
+          </div>
+          <div class="card-body">
+            <label for="fundus">Silahkan klik gambar data sampel:</label>
+            <div class="d-flex flex-wrap">
+              <!-- Contoh gambar sample fundus -->
+              <div class="p-2">
+                <img src="assets/img/Fundus_DR1.jpg" alt="Gambar Fundus DR 1" class="img-thumbnail sample-img" onclick="selectSample('assets/img/Fundus_DR1.jpg', 'fundus')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/Fundus_DR2.jpg" alt="Gambar Fundus DR 2" class="img-thumbnail sample-img" onclick="selectSample('assets/img/Fundus_DR2.jpg', 'fundus')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/Fundus_DR3.jpg" alt="Gambar Fundus DR 3" class="img-thumbnail sample-img" onclick="selectSample('assets/img/Fundus_DR3.jpg', 'fundus')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/Fundus_Normal1.jpg" alt="Gambar Fundus Normal 1" class="img-thumbnail sample-img" onclick="selectSample('assets/img/Fundus_Normal1.jpg', 'fundus')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/Fundus_Normal2.jpg" alt="Gambar Fundus Normal 2" class="img-thumbnail sample-img" onclick="selectSample('assets/img/Fundus_Normal2.jpg', 'fundus')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/Fundus_Normal3.jpg" alt="Gambar Fundus Normal 3" class="img-thumbnail sample-img" onclick="selectSample('assets/img/Fundus_Normal3.jpg', 'fundus')">
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Input Unggah Gambar OCT -->
+        <div class="form-group">
+          <label for="oct">Unggah Gambar OCT:</label>
+          <input type="file" class="form-control-file" name="oct" id="oct">
+        </div>
+    
+        <!-- Bagian Data Sample OCT -->
+        <div class="card mb-4">
+          <div class="card-header bg-primary text-white">
+            <h4>Data Sample OCT</h4>
+          </div>
+          <div class="card-body">
+            <label for="oct">Silahkan klik gambar data sampel:</label>
+            <div class="d-flex flex-wrap">
+              <div class="p-2">
+                <img src="assets/img/OCT_DR1.jpeg" alt="Gambar OCT DR 1" class="img-thumbnail sample-img" onclick="selectSample('assets/img/OCT_DR1.jpeg', 'oct')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/OCT_DR2.jpeg" alt="Gambar OCT DR 2" class="img-thumbnail sample-img" onclick="selectSample('assets/img/OCT_DR2.jpeg', 'oct')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/OCT_DR3.jpeg" alt="Gambar OCT DR 3" class="img-thumbnail sample-img" onclick="selectSample('assets/img/OCT_DR3.jpeg', 'oct')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/OCT_NORMAL1.jpeg" alt="Gambar OCT Normal 1" class="img-thumbnail sample-img" onclick="selectSample('assets/img/OCT_NORMAL1.jpeg', 'oct')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/OCT_NORMAL2.jpeg" alt="Gambar OCT Normal 2" class="img-thumbnail sample-img" onclick="selectSample('assets/img/OCT_NORMAL2.jpeg', 'oct')">
+              </div>
+              <div class="p-2">
+                <img src="assets/img/OCT_NORMAL3.jpeg" alt="Gambar OCT Normal 3" class="img-thumbnail sample-img" onclick="selectSample('assets/img/OCT_NORMAL3.jpeg', 'oct')">
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary btn-lg">Proses dan Prediksi</button>
+        
+      
+      </form>
+    </div>
+    
+
+  
+  
+  <!-- Hasil prediksi dan tampilan gambar -->
+  {% if fundus_image and oct_image and combined_image %}
+  <div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Gambar Fundus</h5>
+              <img src="{{ url_for('uploaded_file', filename=fundus_image) }}" alt="Fundus Image" class="img-fluid" style="max-width: 100%;">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Gambar OCT</h5>
+              <img src="{{ url_for('uploaded_file', filename=oct_image) }}" alt="OCT Image" class="img-fluid" style="max-width: 100%;">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <h5 class="card-title">Hasil Penggabungan</h5>
+              <img src="{{ url_for('uploaded_file', filename=combined_image) }}" alt="Combined Image" class="img-fluid" style="max-width: 100%;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="mt-4 text-center">
+      <h2>Hasil Prediksi: {{ prediction }}</h2>
+    </div>
+    {% endif %}
+
+    <div class="mt-4 text-center"> <!-- Atau gunakan text-right untuk Bootstrap versi 4 -->
+      <a href="{{ url_for('reset') }}" class="btn py-2 px-4" style="background-color: #6c757d; color: #fff; margin-top: 10px; margin-bottom: 10px;">Reset Gambar</a>
+    </div>
+    
+    
+  </div>
+</div>
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: 50px;">
+  <div class="container pt-5">
+    <div class="row g-5 pt-4">
+      <div class="col-lg-3 col-md-6">
+        <h3 class="text-white mb-4">Get In Touch</h3>
+        <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>Ahmad Ali Munawar, S.Tr.Kom</p>
+        <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>aahmadalimunawar@gmail.com</p>
+        <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+6281378938811</p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h3 class="text-white mb-4">Follow Us</h3>
+        <div class="d-flex">
+          <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.facebook.com/wavi.muhammad.9" target="_blank">
+            <i class="fab fa-facebook-f fw-normal"></i>
+          </a>
+          <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.linkedin.com/in/ahmad-ali-munawar-6156201a4" target="_blank">
+            <i class="fab fa-linkedin-in fw-normal"></i>
+          </a>
+          <a class="btn btn-lg btn-primary btn-lg-square rounded" href="https://www.instagram.com/a.ali.mun/?utm_source=ig_web_button_share_sheet" target="_blank">
+            <i class="fab fa-instagram fw-normal"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid text-light py-4" style="background: #051225;">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="mb-md-0">&copy; <a class="text-white border-bottom" href="#">Almun</a>. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+<!-- JavaScript -->
+<script>
+  // Fungsi untuk memilih file sample dan menyimpan di input hidden
+  function selectSample(filePath, inputId) {
+    // Membuat objek file dari URL gambar
+    fetch(filePath)
+      .then(response => response.blob())
+      .then(blob => {
+        const file = new File([blob], filePath.split('/').pop(), { type: blob.type });
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+
+        // Mengisi input file dengan file yang dipilih
+        document.getElementById(inputId).files = dataTransfer.files;
+      })
+      .catch(console.error);
+  }
+
+  // Fungsi untuk submit form dan cek apakah input hidden terisi
+  function submitForm() {
+    const fundusInput = document.getElementById('fundus');
+    const octInput = document.getElementById('oct');
+
+    if (!fundusInput.files.length) {
+      alert("Mohon pilih gambar fundus atau sample.");
+      return false;
+    }
+
+    if (!octInput.files.length) {
+      alert("Mohon pilih gambar OCT atau sample.");
+      return false;
+    }
+
+    return true;
+  }
+</script>
+
+</body>
+</html>

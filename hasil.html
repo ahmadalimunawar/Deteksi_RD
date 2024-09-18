@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Retinopati Diabetik</title>
+</head>
+<body>
+    <h1>Klasifikasi Retinopati Diabetik</h1>
+    
+    <form action="/process" method="POST" enctype="multipart/form-data">
+        <label for="image1">Upload Gambar Fundus:</label>
+        <input type="file" name="image1" accept="image/*">
+        
+        <label for="image2">Upload Gambar OCT:</label>
+        <input type="file" name="image2" accept="image/*">
+        
+        <button type="submit">Proses dan Prediksi</button>
+    </form>
+
+    {% if image_data %}
+        <h2>Hasil Penggabungan dan Prediksi:</h2>
+        <img src="data:image/png;base64,{{ image_data }}" alt="Hasil Penggabungan">
+        <p>Hasil Prediksi: {{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
